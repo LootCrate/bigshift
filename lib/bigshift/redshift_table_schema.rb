@@ -54,9 +54,9 @@ module BigShift
         when /^numeric/, /int/, /^double/, 'real'
           sprintf('"%s"', @name)
         when /^character/
-          sprintf(%q<('"' || REPLACE(REPLACE(REPLACE("%s", '"', '""'), '\\n', '\\\\n'), '\\r', '\\\\r') || '"')>, @name)
+          sprintf(%q<('"' || REPLACE(REPLACE(REPLACE("%s", '"', '""'), '\\n', ''), '\\r', '') || '"')>, @name)
         when /^timestamp/
-          sprintf('(EXTRACT(epoch FROM "%s") + EXTRACT(milliseconds FROM "%s")/1000.0)', @name, @name)
+          sprintf(%q<(TO_CHAR("%s", 'YYYY-MM-DD HH24:MI:SS'))>, @name)
         when 'date'
           sprintf(%q<(TO_CHAR("%s", 'YYYY-MM-DD'))>, @name)
         when 'boolean'
