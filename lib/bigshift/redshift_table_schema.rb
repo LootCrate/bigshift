@@ -74,13 +74,20 @@ module BigShift
 
       def big_query_type
         case @type
-        when /^character/, /^numeric/, 'date' then 'STRING'
-        when /^timestamp/ then 'TIMESTAMP'
-        when /int/ then 'INTEGER'
-        when 'boolean' then 'BOOLEAN'
-        when /^double/, 'real' then 'FLOAT'
-        else
-          raise sprintf('Unsupported column type: %s', type.inspect)
+          when /^character/ then
+            'STRING'
+          when /^date/ then
+            'DATE'
+          when /^timestamp/ then
+            'TIMESTAMP'
+          when /int/ then
+            'INTEGER'
+          when 'boolean' then
+            'BOOLEAN'
+          when /^double/, 'real', 'numeric' then
+            'FLOAT'
+          else
+            raise sprintf('Unsupported column type: %s', type.inspect)
         end
       end
     end

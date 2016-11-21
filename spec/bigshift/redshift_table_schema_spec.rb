@@ -239,8 +239,8 @@ module BigShift
           'timestamp without time zone'
         end
 
-        it 'returns SQL that converts the timestamp to a UNIX timestamp with fractional seconds' do
-          expect(column.to_sql).to eq('(EXTRACT(epoch FROM "the_column") + EXTRACT(milliseconds FROM "the_column")/1000.0)')
+        it 'returns SQL that converts the timestamp to a formatted string' do
+          expect(column.to_sql).to eq('(TO_CHAR("the_column", \'YYYY-MM-DD HH24:MI:SS\'))')
         end
       end
 
