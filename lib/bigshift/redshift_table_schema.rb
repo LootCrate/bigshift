@@ -84,7 +84,7 @@ module BigShift
             'INTEGER'
           when 'boolean' then
             'BOOLEAN'
-          when /^double/, 'real', 'numeric' then
+          when /^double/, 'real', /^numeric/ then
             'FLOAT'
           else
             raise sprintf('Unsupported column type: %s', type.inspect)
