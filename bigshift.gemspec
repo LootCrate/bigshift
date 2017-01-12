@@ -26,8 +26,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = '>= 1.9.3'
 
-  s.add_runtime_dependency 'pg'
-  s.add_runtime_dependency 'google-api-client', '~> 0.9'
-  s.add_runtime_dependency 'googleauth'
+  s.add_runtime_dependency 'pg', '= 0.19.0'
+  s.add_runtime_dependency 'google-api-client', '= 0.9.20'
+  s.add_runtime_dependency 'googleauth', '= 0.5.1'
   s.add_runtime_dependency 'aws-sdk', '= 2.6.15'
 end
